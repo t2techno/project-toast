@@ -18,18 +18,18 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ toast, closeEarly }) {
-  const Icon = ICONS_BY_VARIANT[toast.variant];
+function Toast({ id, variant, closeToast, children }) {
+  const Icon = ICONS_BY_VARIANT[variant];
   return (
-    <div className={`${styles[toast.variant]} ${styles.toast}`}>
+    <div className={`${styles[variant]} ${styles.toast}`}>
       <div className={styles.iconContainer}>
         <Icon size={24} />
       </div>
-      <p className={styles.content}>{toast.message}</p>
+      <p className={styles.content}>{children}</p>
       <button
         className={styles.closeButton}
         onClick={() => {
-          closeEarly(toast.id);
+          closeToast(id);
         }}
       >
         <X size={24} />
